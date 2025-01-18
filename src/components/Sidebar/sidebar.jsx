@@ -1,86 +1,86 @@
-import React, { useState } from 'react';
-import './style.css';
+import React, { useState } from "react";
+import "./style.css"; 
 
-const Sidebar = ({ onGroupClick, onProfileClick }) => {
-  const [isGroupsOpen, setIsGroupsOpen] = useState(true);
-  const [groups, setGroups] = useState([]);
-  const [newGroupName, setNewGroupName] = useState('');
-  const [newGroupPassword, setNewGroupPassword] = useState('');
-  const [showCreateGroupModal, setShowCreateGroupModal] = useState(false);
+const Sidebar = () => {
+  const [groups, setGroups] = useState(["xondamir's chat", "azizdjan_official", "xondamirxonn", "eeee", "best"]);
+  const [showGroups, setShowGroups] = useState(false);
+  const [showCreateGroup, setShowCreateGroup] = useState(false);
+  const [newGroupName, setNewGroupName] = useState("");
+  const [newGroupPassword, setNewGroupPassword] = useState("");
+
+  const handleProfileClick = () => {
+    alert("Profile sahifasiga o'tildi!"); 
+  };
+
+  const toggleGroups = () => {
+    setShowGroups(!showGroups);
+  };
 
   const handleCreateGroup = () => {
-    if (newGroupName && newGroupPassword) {
-     
+    setShowCreateGroup(true);
+  };
+
+  const handleGroupSave = () => {
+    if (newGroupName.trim() !== "") {
       setGroups([...groups, newGroupName]);
-      setNewGroupName('');
-      setNewGroupPassword('');
-      setShowCreateGroupModal(false); 
+      setNewGroupName("");
+      setNewGroupPassword("");
+      setShowCreateGroup(false);
     }
+  };
+
+  const handleGroupCancel = () => {
+    setNewGroupName("");
+    setNewGroupPassword("");
+    setShowCreateGroup(false);
   };
 
   return (
     <div className="sidebar">
-      <button className="profile-button" onClick={onProfileClick}>
+      <button onClick={handleProfileClick} className="sidebar-button">
         Profile
       </button>
-
-    
-      <div className="groups-section">
-        <button
-          className="groups-toggle"
-          onClick={() => setIsGroupsOpen(!isGroupsOpen)}
-        >
-          Groups {isGroupsOpen ? '▼' : '▲'}
+      <div>
+        <button onClick={toggleGroups} className="sidebar-button">
+          Groups {showGroups ? "▲" : "▼"}
         </button>
-
-      
-        {isGroupsOpen && (
-          <ul className="groups-list">
-            {groups.map((group, index) => (
-              <li key={index} onClick={() => onGroupClick(group)}>
-                {group}
-              </li>
-            ))}
-          </ul>
+        {showGroups && (
+          <div className="groups">
+            <button onClick={handleCreateGroup} className="create-group-button">
+              + Create Group
+            </button>
+            <ul>
+              {groups.map((group, index) => (
+                <li key={index} className="group-item">
+                  {group}
+                </li>
+              ))}
+            </ul>
+          </div>
         )}
       </div>
-
-  
-      <button
-        className="create-group-button"
-        onClick={() => setShowCreateGroupModal(true)}
-      >
-        + Create Group
-      </button>
-
-   
-      {showCreateGroupModal && (
+      {showCreateGroup && (
         <div className="create-group-modal">
-          <div className="modal-content">
-            <h3>Create New Group</h3>
-            <input
-              type="text"
-              placeholder="Group Name"
-              value={newGroupName}
-              onChange={(e) => setNewGroupName(e.target.value)}
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              value={newGroupPassword}
-              onChange={(e) => setNewGroupPassword(e.target.value)}
-            />
-            <div className="modal-actions">
-              <button className="create-button" onClick={handleCreateGroup}>
-                Create
-              </button>
-              <button
-                className="cancel-button"
-                onClick={() => setShowCreateGroupModal(false)}
-              >
-                Cancel
-              </button>
-            </div>
+          <h3>Group name and password</h3>
+          <input
+            type="text"
+            placeholder="Group name"
+            value={newGroupName}
+            onChange={(e) => setNewGroupName(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={newGroupPassword}
+            onChange={(e) => setNewGroupPassword(e.target.value)}
+          />
+          <div className="modal-buttons">
+            <button onClick={handleGroupSave} className="save-button">
+              Create
+            </button>
+            <button onClick={handleGroupCancel} className="cancel-button">
+              Cancel
+            </button>
           </div>
         </div>
       )}
@@ -89,7 +89,4 @@ const Sidebar = ({ onGroupClick, onProfileClick }) => {
 };
 
 export default Sidebar;
-
-
-
 

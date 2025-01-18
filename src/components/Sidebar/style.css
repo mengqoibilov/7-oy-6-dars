@@ -3,126 +3,127 @@
   padding: 0;
   box-sizing: border-box;
 }
-.sidebar {
+ .sidebar {
+  background-color: #f4f4f4;
+  padding: 20px;
   width: 250px;
-  padding: 10px;
-  background-color: #f8f9fa;
-  border-right: 1px solid #ddd;
+  height: 100vh;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  justify-content: flex-start;
 }
 
-
-.profile-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #26394d;
+.sidebar-button {
+  background-color: #4caf50;
   color: white;
+  padding: 10px 15px;
+  margin-bottom: 15px;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
-
-.groups-section {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+.sidebar-button:hover {
+  background-color: #45a049;
 }
 
-.groups-toggle {
-  width: 100%;
-  padding: 8px;
-  background-color: #6c757d;
+.groups {
+  margin-top: 10px;
+}
+
+.create-group-button {
+  background-color: #2196f3;
   color: white;
+  padding: 10px 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
-  text-align: left;
+  margin-bottom: 10px;
+  transition: background-color 0.3s ease;
 }
 
-.groups-list {
-  list-style: none;
-  padding: 0;
+.create-group-button:hover {
+  background-color: #1976d2;
 }
 
-.groups-list li {
-  padding: 8px;
-  background-color: #fff;
-  border: 1px solid #ddd;
-  margin: 5px 0;
-  border-radius: 5px;
-  cursor: pointer;
-}
+.group-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    list-style-type: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
 
-
-.create-group-button {
-  padding: 10px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
+.group-item:hover {
+  background-color: #f9f9f9;
 }
 
 .create-group-modal {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 50%;
-  height: 50%;
-  background: none; 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-.modal-content {
-  width: 50%;
-  background: white;
+  top: 20%;
+  left: 50%;
+  transform: translate(-440px);
+  background-color: white;
   padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  width: 300px;
 }
 
-.modal-content h3 {
-  margin: 0 0 20px;
-  font-size: 20px;
+.create-group-modal h3 {
+  margin-bottom: 20px;
+  font-size: 18px;
+  text-align: center;
 }
 
-.modal-content input {
+.create-group-modal input {
   width: 100%;
   padding: 10px;
-  margin: 10px 0;
+  margin-bottom: 15px;
   border: 1px solid #ddd;
   border-radius: 5px;
+  font-size: 14px;
 }
 
-.modal-actions {
+.modal-buttons {
   display: flex;
-  justify-content: flex-end;
-  gap: 10px;
+  justify-content: space-between;
 }
 
-.create-button {
-  padding: 10px 15px;
-  background-color: #5b7085;
+.save-button {
+  background-color: #4caf50;
   color: white;
+  padding: 10px 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+  background-color: #45a049;
 }
 
 .cancel-button {
-  padding: 10px 15px;
-  background-color: #dc3545;
+  background-color: #f44336;
   color: white;
+  padding: 10px 15px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-button:hover {
+  background-color: #d32f2f;
 }

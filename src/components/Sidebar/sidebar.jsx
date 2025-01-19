@@ -44,7 +44,7 @@ const Sidebar = () => {
         <button onClick={toggleGroups} className="sidebar-button">
           Groups {showGroups ? "▲" : "▼"}
         </button>
-        {showGroups && (
+        {showGroups && (     
           <div className="groups">
             <button onClick={handleCreateGroup} className="create-group-button">
               + Create Group

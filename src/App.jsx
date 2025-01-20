@@ -5,6 +5,7 @@ import Login from './page/Login/login';
 import Register from './page/Register/register';
 import Navbar from './components/Navbar/navbar';
 import Sidebar from "./components/Sidebar/sidebar"
+import Grouppage from "./components/Group/Grouppage"
 
 
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "./style.css"; 
+import { Link } from "react-router-dom";
+import "./style.css";
 
 const Sidebar = () => {
   const [groups, setGroups] = useState(["xondamir's chat", "azizdjan_official", "xondamirxonn", "eeee", "best"]);
@@ -8,17 +9,9 @@ const Sidebar = () => {
   const [newGroupName, setNewGroupName] = useState("");
   const [newGroupPassword, setNewGroupPassword] = useState("");
 
-  const handleProfileClick = () => {
-    alert("Profile sahifasiga o'tildi!"); 
-  };
+  const toggleGroups = () => setShowGroups(!showGroups);
 
-  const toggleGroups = () => {
-    setShowGroups(!showGroups);
-  };
-
-  const handleCreateGroup = () => {
-    setShowCreateGroup(true);
-  };
+  const handleCreateGroup = () => setShowCreateGroup(true);
 
   const handleGroupSave = () => {
     if (newGroupName.trim() !== "") {
@@ -37,14 +30,14 @@ const Sidebar = () => {
 
   return (
     <div className="sidebar">
-      <button onClick={handleProfileClick} className="sidebar-button">
+      <Link to="/profile" className="sidebar-button">
         Profile
-      </button>
+      </Link>
       <div>
         <button onClick={toggleGroups} className="sidebar-button">
           Groups {showGroups ? "▲" : "▼"}
         </button>
-        {showGroups && (     
+        {showGroups && (
           <div className="groups">
             <button onClick={handleCreateGroup} className="create-group-button">
               + Create Group
@@ -52,7 +45,7 @@ const Sidebar = () => {
             <ul>
               {groups.map((group, index) => (
                 <li key={index} className="group-item">
-                  {group}
+                  <Link to={`/group/${group}`}>{group}</Link>
                 </li>
               ))}
             </ul>
@@ -89,4 +82,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
